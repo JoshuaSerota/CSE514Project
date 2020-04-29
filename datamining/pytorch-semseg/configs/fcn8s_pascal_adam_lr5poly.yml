@@ -1,0 +1,26 @@
+model:
+    arch: fcn8s
+data:
+    dataset: pascal
+    train_split: train
+    val_split: val
+    img_rows: 'same'
+    img_cols: 'same'
+    path: /content/drive/My Drive/datamining/pytorch-semseg/voc2012/VOCdevkit/VOC2012/
+    sbd_path: /content/drive/My Drive/datamining/pytorch-semseg/sbd/benchmark_RELEASE/
+training:
+    train_iters: 125000
+    batch_size: 1
+    val_interval: 5000
+    n_workers: 16
+    print_interval: 1000
+    optimizer:
+        name: 'adam'
+        lr: 1.0e-5
+    loss:
+        name: 'cross_entropy'
+        size_average: False
+    lr_schedule:
+        name: 'poly_lr'
+        max_iter: 125000
+    resume: fcn8s_pascal_best_model.pkl
